@@ -1,13 +1,6 @@
-import React, { useState } from "react";
-import {
-	Grid,
-	Typography,
-	Card,
-	IconButton,
-	LinearProgress,
-	Icon,
-} from "@mui/material";
-import { PlayArrow, SkipNext, Pause } from "@mui/icons-material";
+import { Pause, PlayArrow, SkipNext } from "@mui/icons-material";
+import { Card, Grid, IconButton, LinearProgress, Typography } from "@mui/material";
+import React from "react";
 
 export default function MusicPlayer({ song, updateRoomDetails, showToast }) {
 	function playPauseSong(play) {
@@ -60,10 +53,7 @@ export default function MusicPlayer({ song, updateRoomDetails, showToast }) {
 						</Typography>
 					</Grid>
 				</Grid>
-				<LinearProgress
-					variant="determinate"
-					value={(song.progress / song.duration) * 100}
-				/>
+				<LinearProgress variant="determinate" value={(song.progress / song.duration) * 100} />
 			</Card>
 		</>
 	);

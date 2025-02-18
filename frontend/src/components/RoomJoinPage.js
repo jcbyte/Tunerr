@@ -1,6 +1,6 @@
+import { Button, Grid, TextField, Typography } from "@mui/material";
 import React, { useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
-import { TextField, Button, Grid, Typography } from "@mui/material";
 
 export default function RoomJoinPage() {
 	const navigate = useNavigate();

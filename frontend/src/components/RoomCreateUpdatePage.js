@@ -1,22 +1,18 @@
-import React, { useState } from "react";
-import { Link, useNavigate } from "react-router-dom";
 import {
 	Button,
-	Grid,
-	Typography,
-	TextField,
-	FormHelperText,
 	FormControl,
+	FormControlLabel,
+	FormHelperText,
+	Grid,
 	Radio,
 	RadioGroup,
-	FormControlLabel,
+	TextField,
+	Typography,
 } from "@mui/material";
+import React, { useState } from "react";
+import { Link, useNavigate } from "react-router-dom";
 
-export default function RoomCreateUpdatePage({
-	update,
-	currentProps,
-	settingsSaveCallback,
-}) {
+export default function RoomCreateUpdatePage({ update, currentProps, settingsSaveCallback }) {
 	const navigate = useNavigate();
 
 	var defaultPlaybackControl = true;
@@ -28,9 +24,7 @@ export default function RoomCreateUpdatePage({
 		roomCode = currentProps.roomCode;
 	}
 
-	const [playbackControl, setPlaybackControl] = useState(
-		defaultPlaybackControl
-	);
+	const [playbackControl, setPlaybackControl] = useState(defaultPlaybackControl);
 	const [skipVotes, setSkipVotes] = useState(defaultVotes);
 
 	function handlePlaybackControlChange(e) {
@@ -83,11 +77,7 @@ export default function RoomCreateUpdatePage({
 						<FormHelperText>
 							<div align="center">Guest Control</div>
 						</FormHelperText>
-						<RadioGroup
-							row
-							defaultValue={defaultPlaybackControl}
-							onChange={handlePlaybackControlChange}
-						>
+						<RadioGroup row defaultValue={defaultPlaybackControl} onChange={handlePlaybackControlChange}>
 							<FormControlLabel
 								value="true"
 								control={<Radio color="primary" />}
@@ -121,22 +111,13 @@ export default function RoomCreateUpdatePage({
 					</FormControl>
 				</Grid>
 				<Grid item xs={12} align="center">
-					<Button
-						color="primary"
-						variant="contained"
-						onClick={update ? handleUpdateRoom : handleCreateRoom}
-					>
+					<Button color="primary" variant="contained" onClick={update ? handleUpdateRoom : handleCreateRoom}>
 						{update ? "Save Changes" : "Create Room"}
 					</Button>
 				</Grid>
 				{update ? null : (
 					<Grid item xs={12} align="center">
-						<Button
-							color="secondary"
-							variant="contained"
-							to="/"
-							component={Link}
-						>
+						<Button color="secondary" variant="contained" to="/" component={Link}>
 							Back
 						</Button>
 					</Grid>
