@@ -1,14 +1,6 @@
 from django.urls import path
-from .views import (
-    GetAuthenticateUrl,
-    spotifyCallback,
-    IsAuthenticated,
-    GetCurrentSong,
-    # PlaySong,
-    # PauseSong,
-    PlayPauseSong,
-    SkipSong,
-)
+
+from .views import GetAuthenticateUrl, GetCurrentSong, IsAuthenticated, PlayPauseSong, SkipSong, spotifyCallback  # PlaySong,; PauseSong,
 
 urlpatterns = [
     path("getAuthenticateUrl", GetAuthenticateUrl.as_view()),
