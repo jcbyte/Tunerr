@@ -16,7 +16,7 @@ export default function App() {
 		fetch("/api/userInRoom")
 			.then((res) => res.json())
 			.then((data) => {
-				// setRoomCode(data.code);
+				setRoomCode(data.code);
 				console.log(data.code);
 			});
 	}, []);
