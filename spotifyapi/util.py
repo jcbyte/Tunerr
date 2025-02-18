@@ -1,9 +1,10 @@
-from .models import SpotifyToken
-from django.utils import timezone
 from datetime import timedelta
-from requests import post, put, get
 
-from .credentials import CLIENT_ID, CLIENT_SECRET
+from django.conf import settings
+from django.utils import timezone
+from requests import get, post, put
+
+from .models import SpotifyToken
 
 BASE_URL = "https://api.spotify.com/v1/me/"
 
@@ -53,8 +54,8 @@ def refreshToken(token):
         data={
             "grant_type": "refresh_token",
             "refresh_token": refreshToken,
-            "client_id": CLIENT_ID,
-            "client_secret": CLIENT_SECRET,
+            "client_id": settings.SPOTIFY_CLIENT_ID,
+            "client_secret": settings.SPOTIFY_CLIENT_SECRET,
         },
     ).json()
 
@@ -97,9 +98,7 @@ def executeSpotifyAPIReq(session, endpoint, post_=False, put_=False):
 
 
 def playPauseSong(session, play):
-    return executeSpotifyAPIReq(
-        session, "player/" + ("play" if play else "pause"), put_=True
-    )
+    return executeSpotifyAPIReq(session, "player/" + ("play" if play else "pause"), put_=True)
 
 
 def skipSong(session):

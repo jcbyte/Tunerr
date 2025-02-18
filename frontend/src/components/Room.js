@@ -1,8 +1,8 @@
-import React, { useState, useEffect } from "react";
-import { useParams, useNavigate } from "react-router-dom";
-import { Grid, Button, Typography, Collapse } from "@mui/material";
-import RoomCreateUpdatePage from "./RoomCreateUpdatePage";
+import { Button, Collapse, Grid, Typography } from "@mui/material";
+import React, { useEffect, useState } from "react";
+import { useNavigate, useParams } from "react-router-dom";
 import MusicPlayer from "./MusicPlayer";
+import RoomCreateUpdatePage from "./RoomCreateUpdatePage";
 
 const SPOTIFY_POLL_RATE = 1000;
 
@@ -105,6 +105,7 @@ export default function Room({ clearHomePageRoomCode }) {
 					fetch("/spotifyapi/getAuthenticateUrl")
 						.then((res) => res.json())
 						.then((data) => {
+							console.log("??????", data);
 							window.location.replace(data.url);
 						});
 				}
@@ -146,11 +147,7 @@ export default function Room({ clearHomePageRoomCode }) {
 		return (
 			<>
 				<Grid item xs={12} align="center">
-					<Button
-						variant="contained"
-						color="primary"
-						onClick={() => setShowSettings(true)}
-					>
+					<Button variant="contained" color="primary" onClick={() => setShowSettings(true)}>
 						Settings
 					</Button>
 				</Grid>
@@ -166,11 +163,7 @@ export default function Room({ clearHomePageRoomCode }) {
 						{roomCode}
 					</Typography>
 				</Grid>
-				<MusicPlayer
-					song={song}
-					updateRoomDetails={getCurrentSong}
-					showToast={showToastComp}
-				/>
+				<MusicPlayer song={song} updateRoomDetails={getCurrentSong} showToast={showToastComp} />
 				{isHost ? renderSettingsButton() : null}
 				<Grid item xs={12} align="center">
 					<Button variant="contained" color="secondary" onClick={leaveRoom}>
@@ -197,11 +190,7 @@ export default function Room({ clearHomePageRoomCode }) {
 					/>
 				</Grid>
 				<Grid item xs={12} align="center">
-					<Button
-						variant="contained"
-						color="secondary"
-						onClick={() => setShowSettings(false)}
-					>
+					<Button variant="contained" color="secondary" onClick={() => setShowSettings(false)}>
 						Back
 					</Button>
 				</Grid>

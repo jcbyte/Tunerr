@@ -17,7 +17,6 @@ export default function App() {
 			.then((res) => res.json())
 			.then((data) => {
 				setRoomCode(data.code);
-				console.log(data.code);
 			});
 	}, []);
 

@@ -1,21 +1,15 @@
-from django.shortcuts import render, redirect
-from .credentials import REDIRECT_URI, CLIENT_ID, CLIENT_SECRET
-from rest_framework.views import APIView
+from django.conf import settings
+from django.shortcuts import redirect, render
 from requests import Request, post
 from rest_framework import status
 from rest_framework.response import Response
-
-from .util import (
-    createUpdateUserToken,
-    isAuthenticated,
-    executeSpotifyAPIReq,
-    playPauseSong,
-    skipSong,
-)
+from rest_framework.views import APIView
 
 from api.models import Room
-from .models import Votes
 from api.views import SESSIONCODE
+
+from .models import Votes
+from .util import createUpdateUserToken, executeSpotifyAPIReq, isAuthenticated, playPauseSong, skipSong
 
 # Create your views here.
 
@@ -31,8 +25,8 @@ class GetAuthenticateUrl(APIView):
                 params={
                     "scope": scope,
                     "response_type": "code",
-                    "redirect_uri": REDIRECT_URI,
-                    "client_id": CLIENT_ID,
+                    "redirect_uri": settings.SPOTIFY_REDIRECT_URI,
+                    "client_id": settings.SPOTIFY_CLIENT_ID,
                 },
             )
             .prepare()
@@ -57,9 +51,9 @@ def spotifyCallback(req, format=None):
         data={
             "grant_type": "authorization_code",
             "code": code,
-            "redirect_uri": REDIRECT_URI,
-            "client_id": CLIENT_ID,
-            "client_secret": CLIENT_SECRET,
+            "redirect_uri": settings.SPOTIFY_REDIRECT_URI,
+            "client_id": settings.SPOTIFY_CLIENT_ID,
+            "client_secret": settings.SPOTIFY_CLIENT_SECRET,
         },
     ).json()
 
@@ -72,9 +66,7 @@ def spotifyCallback(req, format=None):
     if not req.session.exists(req.session.session_key):
         req.session.create()
 
-    createUpdateUserToken(
-        req.session.session_key, accessToken, tokenType, expiresIn, refreshToken
-    )
+    createUpdateUserToken(req.session.session_key, accessToken, tokenType, expiresIn, refreshToken)
 
     return redirect("frontend:")
 
@@ -84,9 +76,7 @@ class GetCurrentSong(APIView):
         roomCode = self.request.session.get(SESSIONCODE)
         rooms = Room.objects.filter(code=roomCode)
         if not rooms.exists():
-            return Response(
-                {"Invalid room": "Not in room"}, status=status.HTTP_404_NOT_FOUND
-            )
+            return Response({"Invalid room": "Not in room"}, status=status.HTTP_404_NOT_FOUND)
         room = rooms[0]
         host = room.host
         endpoint = "player/currently-playing"
