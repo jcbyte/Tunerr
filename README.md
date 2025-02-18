@@ -4,14 +4,62 @@ Tunerr is a simple web app that lets you create shared rooms where invited frien
 
 **Note:** This app uses the spotify API which requires spotify premium for most functionality.
 
-_This is my first project developed using React._
+## Run Locally
 
-# Tech Stack
+### Setup Server
+
+Install Dependencies
+
+```bash
+pip install -r requirements.txt
+```
+
+Set environment variables at `tunerr/.env`
+
+```ini
+SECRET_KEY=...
+
+# Spotify API Secrets
+SPOTIFY_CLIENT_ID=...
+SPOTIFY_CLIENT_SECRET=...
+```
+
+Apply Migrations
+
+```bash
+python manage.py migrate
+```
+
+Run Server
+
+```bash
+python manage.py runserver
+```
+
+### Setup frontend
+
+```bash
+cd frontend
+```
+
+Install dependencies
+
+```bash
+npm install
+```
+
+Build Frontend
+
+```bash
+npm run dev
+```
+
+## Tech Stack
 
 **Client:** React, Javascript, Material UI
 
 **Backend:** Django, Python
 
-# Authors
+## Authors
 
 - [@jcbyte](https://github.com/jcbyte)

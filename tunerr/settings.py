@@ -20,8 +20,7 @@ environ.Env.read_env()
 # Spotify API Secrets
 SPOTIFY_CLIENT_ID = env("SPOTIFY_CLIENT_ID")
 SPOTIFY_CLIENT_SECRET = env("SPOTIFY_CLIENT_SECRET")
-SPOTIFY_REDIRECT_URI = env("SPOTIFY_REDIRECT_URI")
-
+SPOTIFY_REDIRECT_URI = "http://127.0.0.1:8000/spotifyapi/redirect"
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
