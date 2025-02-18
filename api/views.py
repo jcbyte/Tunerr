@@ -1,11 +1,11 @@
+from django.http import JsonResponse
 from django.shortcuts import render
 from rest_framework import generics, status
-from rest_framework.views import APIView
 from rest_framework.response import Response
-from django.http import JsonResponse
+from rest_framework.views import APIView
 
 from .models import Room
-from .serializers import RoomSerializer, CreateRoomSerializer, UpdateRoomSerializer
+from .serializers import CreateRoomSerializer, RoomSerializer, UpdateRoomSerializer
 
 SESSIONCODE = "code"
 
@@ -136,9 +136,7 @@ class UpdateRoomView(APIView):
                     room.guestCanPause = serializer.data.get("guestCanPause")
                     room.skipVotes = serializer.data.get("skipVotes")
                     room.save(update_fields=["guestCanPause", "skipVotes"])
-                    return Response(
-                        {"Success": "Room updated"}, status=status.HTTP_200_OK
-                    )
+                    return Response({"Success": "Room updated"}, status=status.HTTP_200_OK)
 
                 return Response(
                     {"Forbidden": "Not host of room"},
@@ -150,6 +148,4 @@ class UpdateRoomView(APIView):
                 status=status.HTTP_404_NOT_FOUND,
             )
 
-        return Response(
-            {"Bad request": "Invalid data"}, status=status.HTTP_400_BAD_REQUEST
-        )
+        return Response({"Bad request": "Invalid data"}, status=status.HTTP_400_BAD_REQUEST)
