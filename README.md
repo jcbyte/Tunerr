@@ -1,6 +1,6 @@
 # Tunerr
 
-Tunerr is a simple web app that lets you create shared rooms where invited friends can control your spotify playback (skip, pause and play), perfect for when your hanging out and playing music without needing to pass your phone around.
+A web app for shared music control. Tunerr allows creating rooms, invite friends, and lets everyone play, pause, or skip tracks on your Spotify without needing to pass your phone around.
 
 **Note:** This app uses the spotify API which requires spotify premium for most functionality.
 
