@@ -8,13 +8,13 @@ A web app for shared music control. Tunerr allows creating rooms, inviting frien
 
 ### Setup Server
 
-Install dependencies
+Install dependencies:
 
 ```bash
 pip install -r requirements.txt
 ```
 
-Set environment variables at `tunerr/.env`
+Set environment variables at `tunerr/.env`:
 
 ```ini
 SECRET_KEY=...
@@ -24,13 +24,13 @@ SPOTIFY_CLIENT_ID=...
 SPOTIFY_CLIENT_SECRET=...
 ```
 
-Apply migrations
+Apply migrations:
 
 ```bash
 python manage.py migrate
 ```
 
-Run Server
+Run server:
 
 ```bash
 python manage.py runserver
@@ -42,13 +42,13 @@ python manage.py runserver
 cd frontend
 ```
 
-Install dependencies
+Install dependencies:
 
 ```bash
 npm install
 ```
 
-Build Frontend
+Build frontend:
 
 ```bash
 npm run dev
