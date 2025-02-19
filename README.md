@@ -1,4 +1,4 @@
-# Tunerr
+# <img src="frontend/static/favicon.ico" height="40"> &nbsp;Tunerr
 
 A web app for shared music control. Tunerr allows creating rooms, inviting friends, and lets everyone play, pause, or skip tracks on your Spotify account without needing to pass your phone around.
 
@@ -8,7 +8,7 @@ A web app for shared music control. Tunerr allows creating rooms, inviting frien
 
 ### Setup Server
 
-Install Dependencies
+Install dependencies
 
 ```bash
 pip install -r requirements.txt
@@ -24,7 +24,7 @@ SPOTIFY_CLIENT_ID=...
 SPOTIFY_CLIENT_SECRET=...
 ```
 
-Apply Migrations
+Apply migrations
 
 ```bash
 python manage.py migrate
