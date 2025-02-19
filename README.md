@@ -1,6 +1,6 @@
 # Tunerr
 
-A web app for shared music control. Tunerr allows creating rooms, invite friends, and lets everyone play, pause, or skip tracks on your Spotify without needing to pass your phone around.
+A web app for shared music control. Tunerr allows creating rooms, inviting friends, and lets everyone play, pause, or skip tracks on your Spotify account without needing to pass your phone around.
 
 **Note:** This app uses the spotify API which requires spotify premium for most functionality.
 
@@ -54,12 +54,6 @@ Build Frontend
 npm run dev
 ```
 
-## Tech Stack
+## Licence
 
-**Client:** React, Javascript, Material UI
-
-**Backend:** Django, Python
-
-## Authors
-
-- [@jcbyte](https://github.com/jcbyte)
+[Apache License 2.0](LICENSE)
